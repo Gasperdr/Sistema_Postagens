@@ -19,7 +19,7 @@ class LoginController extends Controller
             'email.email' => 'o email não é valido',
         ]);
 
-        if(Auth::attempt($credenciais)) {
+        if(Auth::attempt($credenciais, $request->remember)) {
             $request->session()->regenerate();
             return redirect()->intended('/admin/dashboard');
         } else {
@@ -35,4 +35,11 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect('login.form');
     }
+
+    public function create() {
+        return view('login.create');
+        
+    }
+
+
 }

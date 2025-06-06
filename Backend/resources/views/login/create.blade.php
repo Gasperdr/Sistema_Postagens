@@ -7,9 +7,12 @@
 <form action="{{route('users.store')}}" method="POST">
     @csrf
 
-    Nome: <br> <input  name="firstName"> <br>
-    Sobrenome: <br> <input name="lastname"> <br>
+    Nome: <br> <input type="text" name="firstName"> <br>
+
+    Sobrenome: <br> <input type="text" name="lastName"> <br>
+
     Email: <br> <input type="email" name="email"> <br>
+    
     Senha: <br> <input type="password" name="password"> <br>
 
     <button type="submit"> Cadastrar</button>
