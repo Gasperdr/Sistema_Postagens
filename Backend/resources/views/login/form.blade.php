@@ -8,7 +8,7 @@
     @endforeach
 @endif
 
-<form action="{{route('login.auth')}}" method="POST">
+<form  method="POST" action="{{route('login.auth')}}">
     @csrf
 
     Email: <br> <input type="email" name="email"> <br>

@@ -4,13 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\PostagemController;
+use App\Http\Controllers\PostController;
 
 
-Route::get('/', [PostagemController::class, 'index'])->name('home');
 
 Route::resource('users', UserController::class);
 Route::resource('postagens', PostagemController::class);
+
+Route::get('/', [PostController::class, 'index']);
 
 Route::view('/login', 'login.form')->name('login.form');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
@@ -19,3 +20,5 @@ Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('adm
 Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout')->middleware('auth');
 
 Route::get('/register', [LoginController::class, 'create'])->name('login.create');
+Route::delete('/admin/post/delete/{id}', [PostController::class, 'destroy'])->name('admin.delete');
+Route::post('/admin/post/store', [PostController::class, 'store'])->name('admin.store');
