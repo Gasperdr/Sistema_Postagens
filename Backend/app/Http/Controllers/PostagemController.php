@@ -6,7 +6,7 @@ use App\Models\Postagens;
 use Illuminate\Http\Request;
 
 
-class PostagensController extends Controller
+class PostagemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class PostagensController extends Controller
     public function index()
     {
         $postagens = Postagens::all();
-         return dd($postagens);
+         
+        return view('home', compact('postagens'));
     }
 
     /**

@@ -4,12 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostagemController;
 
-Route::get('/', function () {
-    return view('home');
-});
+
+Route::get('/', [PostagemController::class, 'index'])->name('home');
 
 Route::resource('users', UserController::class);
+Route::resource('postagens', PostagemController::class);
 
 Route::view('/login', 'login.form')->name('login.form');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
