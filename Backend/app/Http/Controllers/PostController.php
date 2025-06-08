@@ -50,7 +50,7 @@ class PostController extends Controller
         'id_user' => Auth::id(), // 👈 AQUI é o mais importante
     ]);
 
-    return redirect()->intended('/')->with('success', 'Post criado!');
+    return redirect()->intended('home')->with('success', 'Post criado!');
     
     
         //     $post = $request->all();

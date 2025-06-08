@@ -21,7 +21,7 @@ class LoginController extends Controller
 
         if(Auth::attempt($credenciais, $request->remember)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('home');
         } else {
             return redirect()->back()->with('erro', 'Usuário ou senha inválido');
         }
