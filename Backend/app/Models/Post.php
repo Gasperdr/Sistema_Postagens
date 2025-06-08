@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
-    /** @use HasFactory<\Database\Factories\PostFactory> */
+//     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
-    protected $tabel = 'posts';
-
+    protected $table = 'posts';
+    
     protected $fillable = [
         'titulo',
         'descricao',

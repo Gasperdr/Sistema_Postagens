@@ -12,12 +12,6 @@
 <body>
   @csrf
    <div>
-    <ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">three</a></li>
-</ul>
     <nav>
     <div class="nav-wrapper container">
       <a href="#" class="brand-logo">Logo</a>
@@ -30,40 +24,23 @@
   </nav>
    </div>
    
-   <!-- Modal Trigger -->
-   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
- 
-   <!-- Modal Structure -->
-   <div id="modal1" class="modal">
-     <div class="modal-content">
-       <h4>Modal Header</h4>
-       <p>A bunch of text</p>
-     </div>
-     <div class="modal-footer">
-       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-     </div>
-   </div>
-   <div class="row container">
-     
-    @foreach ($post as $postagem)
+  <a class="waves-effect waves-light btn" href="{{route('admin.create')}}">Cadastrar</a>
+   @foreach ($post as $postagem)
+    <div class="row">     
      <div class="col s12 m4">
       <div class="card" style="height: 600px">
         <div class="card-image">
           <img src="{{ $postagem->imagem }}" width="400" height="400">
-          
-          @can('verPosts', $post)
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">more_horiz</i></a>
-          @endcan
-
+          <span class="card-title">{{$postagem->titulo}}</span>    
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">visibility</i></a>
         </div>
-        <div class="card-content">
-            <span class="card-title">{{$postagem->titulo}}</span>
-          <p>{{Str::limit($postagem->descricao, 75)}}</p>
+          <div class="card-content">
+            <p>{{Str::limit($postagem->descricao, 75)}}</p>
+          </div>
         </div>
       </div>
     </div>
-    @endforeach
-  </div>
+  @endforeach
 
 
     

@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
@@ -16,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::all()->paginate(3);
+        $post = Post::all();
         // Gate::authorize('ver-post');
         return view('home', compact('post'));
     }
@@ -26,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.createpost');
     }
 
     /**
@@ -34,16 +35,36 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = $request->all();
+    
+    $request->validate([
+        'titulo' => 'required',
+        'descricao' => 'required',
+        'imagem' => 'required|url',
+    ]);
 
-        if($request->image) {
-           $post['imagem'] = $request->image->store('post');
-        }
+    Post::create([
+        'titulo' => $request->titulo,
+        'descricao' => $request->descricao,
+        'imagem' => $request->imagem,
+        'slug' => Str::slug($request->titulo),
+        'id_user' => Auth::id(), // 👈 AQUI é o mais importante
+    ]);
 
-       $post['slug'] = Str::slug($request-titulo);     
+    return redirect()->intended('/')->with('success', 'Post criado!');
+    
+    
+        //     $post = $request->all();
 
-        $post = Post::create($post);
-        return redirect()->route('home')->with('sucesso', 'Postado com sucesso');
+    //     if($request->image) {
+    //        $post['imagem'] = $request->image->store('post');
+    //     }
+
+    //    $post['slug'] = Str::slug($request->titulo);     
+
+    //     $post = Post::create($post);
+        
+        
+    //     return redirect()->route('home')->with('sucesso', 'Postado com sucesso');
     }
 
     /**

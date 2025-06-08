@@ -14,6 +14,7 @@
     Email: <br> <input type="email" name="email"> <br>
     
     Senha: <br> <input type="password" name="password"> <br>
+    <button type="submit"> Cadastrar</button> <br>
+    <a class="waves-effect waves-light btn" href="{{route('login.form')}}">Logar</a> <br>
 
-    <button type="submit"> Cadastrar</button>
 </form>

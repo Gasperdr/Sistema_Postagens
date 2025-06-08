@@ -9,7 +9,7 @@ use App\Http\Controllers\PostController;
 
 
 Route::resource('users', UserController::class);
-Route::resource('postagens', PostagemController::class);
+Route::resource('post', PostController::class);
 
 Route::get('/', [PostController::class, 'index']);
 
@@ -22,3 +22,4 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout')-
 Route::get('/register', [LoginController::class, 'create'])->name('login.create');
 Route::delete('/admin/post/delete/{id}', [PostController::class, 'destroy'])->name('admin.delete');
 Route::post('/admin/post/store', [PostController::class, 'store'])->name('admin.store');
+Route::get('/admin/create', [PostController::class, 'create'])->name('admin.create');
