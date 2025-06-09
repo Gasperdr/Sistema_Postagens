@@ -18,8 +18,7 @@ class LoginController extends Controller
             'password.required' =>'O campo senha é obrigatório',
             'email.email' => 'o email não é valido',
         ]);
-
-        if(Auth::attempt($credenciais, $request->remember)) {
+           if(Auth::attempt($credenciais, $request->remember)) {
             $request->session()->regenerate();
             return redirect()->intended('home');
         } else {

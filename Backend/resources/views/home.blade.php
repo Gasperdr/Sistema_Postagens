@@ -32,8 +32,9 @@
       <div class="card" style="height: 600px">
         <div class="card-image">
           <img src="{{ $postagem->imagem }}" width="400" height="400">
-          <span class="card-title">{{$postagem->titulo}}</span>    
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">visibility</i></a>
+          <span class="card-title">{{$postagem->titulo}}</span>   
+          <a class="btn-floating halfway-fab waves-effect waves-light red" href="{{ route('post.edit', $postagem->id) }}"><i class="material-icons">edit</i></a>
+
         </div>
           <div class="card-content">
             <p>{{Str::limit($postagem->descricao, 75)}}</p>

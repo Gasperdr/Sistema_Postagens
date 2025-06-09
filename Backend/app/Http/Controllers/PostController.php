@@ -12,6 +12,30 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class PostController extends Controller
 {
+    
+    public function edit($id)
+{
+    $post = Post::findOrFail($id);
+    return view('edit', compact('post'));
+}
+    
+public function update(Request $request,$id)
+{
+    $request->validate([
+        'titulo' => 'required|string|max:255',
+        'descricao' => 'required|string',
+        'imagem' => 'required|url',
+    ]);
+
+    $post = Post::findOrFail($id);
+    $post->titulo = $request->titulo;
+    $post->descricao = $request->descricao;
+    $post->imagem = $request->imagem;
+    $post->save();
+
+    return redirect()->route('home')->with('status', 'Postagem atualizada com sucesso!');
+}
+    
     /**
      * Display a listing of the resource.
      */
@@ -47,7 +71,7 @@ class PostController extends Controller
         'descricao' => $request->descricao,
         'imagem' => $request->imagem,
         'slug' => Str::slug($request->titulo),
-        'id_user' => Auth::id(), // 👈 AQUI é o mais importante
+        'id_user' => Auth::id(),
     ]);
 
     return redirect()->intended('home')->with('success', 'Post criado!');
@@ -78,18 +102,11 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.

@@ -36,3 +36,6 @@ Route::post('/novasenha', [RecuperarSenhaController::class, 'novaSenha'])->name(
 Route::get('/senha/redefinir', [RecuperarSenhaController::class, 'form'])->name('senha.form');
 // Route::get('/senha/redefinir/{token}', [RecuperarSenhaController::class, 'form'])->name('senha.form');
 Route::get('/token', [AlterarSenhaController::class, 'index'])->name('token');
+
+Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit');
+Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update');

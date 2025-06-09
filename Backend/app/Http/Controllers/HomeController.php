@@ -10,7 +10,7 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $post = Post::all();
         return view('home', compact('post'));
