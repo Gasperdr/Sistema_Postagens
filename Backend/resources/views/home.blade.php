@@ -25,7 +25,8 @@
    </div>
    
   <a class="waves-effect waves-light btn" href="{{route('admin.create')}}">Cadastrar</a>
-   @foreach ($post as $postagem)
+  
+  @foreach ($post as $postagem)
     <div class="row">     
      <div class="col s12 m4">
       <div class="card" style="height: 600px">

@@ -13,5 +13,6 @@
 
     imagem: <br> <input type="imagem" name="imagem"> <br>    
 
+    
     <button type="submit"> Cadastrar</button>
 </form>

@@ -14,6 +14,7 @@
     Email: <br> <input type="email" name="email"> <br>
     Senha: <br> <input type="password" name="password"> <br>
     <a class="waves-effect waves-light btn" href="{{route('login.create')}}">Cadastrar</a>
+    <a class="waves-effect waves-light btn" href="{{route('auth.senha')}}">Esqueci minha Senha</a>
     <br> <input type="checkbox" name="remember"> Lembrar-me 
     <br> <button type="submit"> Entrar</button>
 </form>
