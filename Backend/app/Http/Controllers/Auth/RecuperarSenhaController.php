@@ -22,10 +22,37 @@ class RecuperarSenhaController extends Controller
 
 public function novaSenha(Request $request)
 {
+    $user = User::where('email', $request->email)->first();
+
     $request->validate([
         'email' => 'required|email',
-        'password' => 'required|confirmed|min:6',
-        'token' => 'required'
+        'password' => [
+            'required',
+            'confirmed',
+            'min:6',
+            function ($attribute, $value, $fail) use ($user, $request) {
+                $senha = strtolower($value);
+                if (!$user) {
+                    $fail('Usuário não encontrado.');
+                    return;
+                }
+
+                $firstName = strtolower($user->firstName ?? '');
+                $lastName = strtolower($user->lastName ?? '');
+                $email = strtolower($request->email);
+
+                if ($firstName && strpos($senha, $firstName) !== false) {
+                    $fail('A senha não pode conter o primeiro nome.');
+                }
+                if ($lastName && strpos($senha, $lastName) !== false) {
+                    $fail('A senha não pode conter o sobrenome.');
+                }
+                if (strpos($senha, $email) !== false) {
+                    $fail('A senha não pode conter o e-mail.');
+                }
+            },
+        ],
+        'token' => 'required',
     ]);
 
     $reset = DB::table('resetar_senha')
