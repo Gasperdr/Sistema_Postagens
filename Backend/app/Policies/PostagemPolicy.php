@@ -1,21 +1,24 @@
 <?php
 
+
+
 namespace App\Policies;
 
 use App\Models\User;
 use App\Models\Post;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostagemPolicy
 {
-    /**
-     * Create a new policy instance.
-     */
-    public function __construct()
+    use HandlesAuthorization;
+
+    public function viewPost(?User $user, Post $postagem)
     {
-        //
+        return $user !== null;
     }
 
-    public function verPosts(User $user, Post $post){
-        return $user->id = $post->id_user;
+    public function editPost(User $user, Post $postagem)
+    {
+        return $user->id === $postagem->id_user;
     }
 }

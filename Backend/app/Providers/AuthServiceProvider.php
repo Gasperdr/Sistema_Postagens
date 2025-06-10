@@ -2,35 +2,21 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Supporte\Facades\Gate;
-use App\Models\User;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Post;
+use App\Policies\PostagemPolicy;
 
-class AuthServiceProvaider extends ServiceProvider
+class AuthServiceProvider extends ServiceProvider
 {
-   
-    protected $policies = [
-           'App\Models\Post' => 'App\Policies\PostPolicy',
-    ];
-   
-    /**
-     * Register services.
-     */
-    public function register(): void
-    {
-        //
-    }
 
-    /**
-     * Bootstrap services.
-     */
+    protected $policies = [
+        'App\Models\Post' => 'App\Policies\PostagemPolicy',
+    ];
+
     public function boot(): void
     {
         $this->registerPolicies();
-
-        Gate::define('ver-post', function(User $user, Post $post){
-            return $user->id = $post->id_user;
-        });
     }
+
 }
