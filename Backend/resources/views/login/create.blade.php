@@ -1,3 +1,9 @@
+@extends('../master')
+
+@section('content')
+    <App />
+@endsection
+
 @if($errors->any())
     @foreach ($errors->all() as $error)
         {{$error}} <br>

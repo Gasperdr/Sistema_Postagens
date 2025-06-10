@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+@extends('master')
+@section('content')
+    <Home />
+
+@endsection
+    
+    
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,20 +17,7 @@
     <title>Document</title>
 </head>
 <body>
-  @csrf
-   <div>
-    <nav>
-    <div class="nav-wrapper container">
-      <a href="#" class="brand-logo">Logo</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="{{route('login.form')}}">Login</a></li>
-        <li><a href="{{route('login.create')}}">registro</a></li>
-        <button> <a href="{{ route('login.form')}}">Sair</a></button> 
-      </ul>
-    </div>
-  </nav>
-   </div>
-   
+  @csrf   
   <a class="waves-effect waves-light btn" href="{{route('admin.create')}}">Cadastrar</a>
 
   
@@ -54,4 +48,4 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
-</html>
+</html> --}}
