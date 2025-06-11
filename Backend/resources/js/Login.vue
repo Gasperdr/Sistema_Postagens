@@ -4,12 +4,12 @@
       <form @submit.prevent="login" class="bg-stone-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <h2 class="text-xl font-bold text-center mb-4">Login</h2>
 
-        <!-- Mensagens de erro da sessão -->
+       
         <div v-if="erro" class="mb-4 text-red-600 text-sm text-center">
           {{ erro }}
         </div>
 
-        <!-- Validações de campos -->
+    
         <div v-if="validationErrors.length" class="mb-4 text-red-600 text-sm">
           <ul>
             <li v-for="(e, index) in validationErrors" :key="index">{{ e }}</li>
@@ -89,7 +89,7 @@ export default {
     csrfToken: String,
     erro: String,
     validationErrors: Array,
-    routes: Object // { cadastrar: '/...', recuperarSenha: '/...' }
+    routes: Object 
   },
   data() {
     return {

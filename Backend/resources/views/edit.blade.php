@@ -1,7 +1,5 @@
 @extends('master')
 @section('content')
-    <Edit />
-
 @endsection
     
 
