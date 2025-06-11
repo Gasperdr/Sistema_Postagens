@@ -11,6 +11,7 @@ import CreatePost from './CreatePost.vue';
 import Login from './Login.vue'
 import CreateAccount from './CreateAccount.vue'
 import FormResetPassword from './FormResetPassword.vue';
+import NewPassword from './NewPassword.vue';
 
 const app = createApp();
 
@@ -20,6 +21,7 @@ app.component('home', Home);
 app.component('create-post', CreatePost)
 app.component('create-account', CreateAccount)
 app.component('form-reset-password', FormResetPassword)
+app.component('new-password', NewPassword)
 
 app.component('login', Login)
 
