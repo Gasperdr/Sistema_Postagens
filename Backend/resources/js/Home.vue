@@ -1,4 +1,4 @@
-<template>
+<template class="BackGroundHome">
   <App />
   
 
@@ -17,5 +17,7 @@ import App from './components/menuNavHome.vue'
 
 
 <style>
-
+.BackGroundHome{
+  background-color: #000500 ;
+}
 </style>

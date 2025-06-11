@@ -1,6 +1,7 @@
 import './bootstrap';
 
 import { createApp } from 'vue';
+import '../css/app.css';
 import App from './components/menuNavHome.vue';
 import Home from './Home.vue';
 

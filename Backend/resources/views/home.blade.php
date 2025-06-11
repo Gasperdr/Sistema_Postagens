@@ -18,6 +18,9 @@
 </head>
 <body>
   @csrf   
+  
+  
+  
   <a class="waves-effect waves-light btn" href="{{route('admin.create')}}">Cadastrar</a>
 
   
