@@ -13,8 +13,15 @@
   <title>Home</title>
 </head>
 <body>
-  <div id="app">
-    <Home />
+  <div id='app'>  
+  <home
+  :usuario='@json(Auth::user())'
+  :postagens='@json($posts)'
+  :routes='@json([
+    "cadastrar" => route("login.create"),
+    "criar" => route("admin.create"),
+  ])'
+></home>
   </div>
 
 </body>

@@ -13,3 +13,4 @@ Route::get('/user', function (Request $request) {
 Route::get('/postagens', [PostController::class, 'index']);
 Route::get('/user', [UserController::class, 'index']);
 Route::put('/postagens/{id}', [PostController::class, 'update']);
+Route::get('/home', [PostController::class, 'index'])->name('home');

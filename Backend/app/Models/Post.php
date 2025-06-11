@@ -20,4 +20,8 @@ class Post extends Model
         'id_user',
 
     ];
+    public function autor()
+{
+    return $this->belongsTo(User::class, 'id_user');
+}
 }

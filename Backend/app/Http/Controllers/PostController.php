@@ -62,13 +62,22 @@ public function update(Request $request,$id)
      * Display a listing of the resource.
      */
     public function index()
-    {
+{
+    $posts = Post::with('autor')->latest()->get();
 
-        return response()->json(Post::all());
-        // $post = Post::all();
-        // Gate::authorize('ver-post');
+    return view('home', [
+        'posts' => $posts,
+    ]);
+}
+
+public function autor()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
+    // $post = Post::all();
+    // Gate::authorize('ver-post');
         // return view('home', compact('post'));
-    }
+   
 
     /**
      * Show the form for creating a new resource.
