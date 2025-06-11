@@ -16,7 +16,15 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+ 
+
+     public function index()
+    {
+        return response()->json(User::all());
+    
+    }
+
+     public function create()
     {
         //
     }

@@ -14,19 +14,20 @@ use App\Http\Controllers\Auth\RecuperarSenhaController;
 Route::resource('users', UserController::class);
 Route::resource('post', PostController::class);
 
-Route::get('/', [LoginController::class, 'create']);
+Route::get('/', [PostController::class, 'index']);
 
 Route::view('/login', 'login.form')->name('login.form');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout')->middleware('auth');
+Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
 Route::get('/register', [LoginController::class, 'create'])->name('login.create');
 Route::delete('/admin/post/delete/{id}', [PostController::class, 'destroy'])->name('admin.delete');
 Route::post('/admin/post/store', [PostController::class, 'store'])->name('admin.store');
 Route::get('/admin/create', [PostController::class, 'create'])->name('admin.create');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [PostController::class, 'index'])->name('home');
 
 Route::get('/recuperarsenha', [AlterarSenhaController::class, 'form'])->name('recuperar.senha');
 Route::post('/linkderecuperacao', [AlterarSenhaController::class, 'link'])->name('link.senha');
@@ -39,3 +40,4 @@ Route::get('/token', [AlterarSenhaController::class, 'index'])->name('token');
 
 Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit');
 Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update');
+

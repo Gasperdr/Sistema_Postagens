@@ -12,13 +12,35 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class PostController extends Controller
 {
+ 
     
     public function edit($id)
 {
     $post = Post::findOrFail($id);
     return view('edit', compact('post'));
 }
-    
+  
+// public function update(Request $request, $id)
+// {
+//     $post = Postagem::findOrFail($id);
+
+//     $post->titulo = $request->input('titulo');
+//     $post->descricao = $request->input('descricao');
+
+//     if ($request->hasFile('imagem')) {
+//         $imagem = $request->file('imagem');
+//         $nomeImagem = time() . '.' . $imagem->getClientOriginalExtension();
+//         $imagem->move(public_path('imagens'), $nomeImagem);
+//         $post->imagem = $nomeImagem;
+//     }
+
+//     $post->save();
+
+//     return response()->json(['message' => 'Post atualizado com sucesso!']);
+// }
+
+
+
 public function update(Request $request,$id)
 {
     $request->validate([
@@ -40,11 +62,22 @@ public function update(Request $request,$id)
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $post = Post::all();
-        // Gate::authorize('ver-post');
-        return view('home', compact('post'));
-    }
+{
+    $posts = Post::with('autor')->latest()->get();
+
+    return view('home', [
+        'posts' => $posts,
+    ]);
+}
+
+public function autor()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
+    // $post = Post::all();
+    // Gate::authorize('ver-post');
+        // return view('home', compact('post'));
+   
 
     /**
      * Show the form for creating a new resource.
