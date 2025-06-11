@@ -12,8 +12,8 @@
     <!-- Div esquerda: agora com o span -->
     <div class="flex lg:flex-1">
       <template v-if="usuario">
-        <span class="text-xl font-semibold text-stone-800">
-          Olá, {{ usuario.firstName }} {{ usuario.lastName }}
+        <span class="text-4xl font-semibold text-stone-800">
+         <h1> Olá, {{ usuario.firstName }} {{ usuario.lastName }} </h1>
         </span>
       </template>
     </div>
@@ -34,13 +34,13 @@
 
     <!-- Conteúdo -->
     <div class="container mx-auto p-4">
-      <div v-if="!usuario" class="text-center text-lg text-stone-700">
+      <div v-if="!usuario" class="mt-100 text-center text-4xl text-stone-700">
         Faça login para ver os posts.
       </div>
 
       <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <div
-          v-for="post in postagens"
+          v-for="post in postagensOrdenadas"
           :key="post.id"
           class="max-w-sm rounded overflow-hidden shadow-lg bg-stone-100 p-4 flex flex-col"
         >
@@ -50,15 +50,30 @@
             alt="Imagem"
           />
 
-          <div class="flex-1 px-2 py-4">
-            <h2 class="font-bold text-xl mb-1 text-stone-800">{{ post.titulo }}</h2>
-            <p class="text-sm text-stone-600 mb-2">
-              por {{ post.autor.firstName }} {{ post.autor.lastName }} em {{ formatarData(post.created_at) }}
-            </p>
-            <p class="text-stone-700 text-base">
-              {{ limitarDescricao(post.descricao) }}
-            </p>
-          </div>
+          <div class="flex-1 px-2 py-4 flex flex-col">
+  <h2 class="font-bold text-xl mb-1 text-stone-800">{{ post.titulo }}</h2>
+
+  <p class="text-stone-700 text-base">
+    {{ limitarDescricao(post.descricao) }}
+  </p>
+
+  <!-- Rodapé com autor e data no fim -->
+  <div class="mt-auto pt-4">
+    <p class="text-sm text-stone-600 flex items-center justify-between">
+      <!-- Grupo esquerda: ícone + nome -->
+      <span class="flex items-center space-x-1">
+        <i class="material-icons text-stone-800">person</i>
+        <span>{{ post.autor.firstName }} {{ post.autor.lastName }}</span>
+      </span>
+
+      <!-- Grupo direita: ícone + data -->
+      <span class="flex items-center space-x-1">
+        <i class="material-icons text-stone-800 text-[6px]">calendar_month</i>
+        <span>{{ formatarData(post.created_at) }}</span>
+      </span>
+    </p>
+  </div>
+</div>
 
           <div class="mt-auto px-2 pt-2" v-if="post.autor.id === usuario.id">
             <button
@@ -129,6 +144,16 @@ export default {
       });
     },
   },
+  computed: {
+  postagensOrdenadas() {
+    if (!this.usuario) return this.postagens;
+
+    const meusPosts = this.postagens.filter(post => post.autor.id === this.usuario.id);
+    const outrosPosts = this.postagens.filter(post => post.autor.id !== this.usuario.id);
+
+    return [...meusPosts, ...outrosPosts];
+  },
+},
 };
 </script>
 
