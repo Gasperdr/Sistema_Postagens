@@ -1,15 +1,14 @@
 <template>
-  <div class="min-h-screen bg-stone-300">
-  <header class="bg-stone-300 shadow-lg">
+  <div class="min-h-screen bg-stone-200">
+  <header class="bg-stone-200 shadow-lg">
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
       <div class="flex lg:flex-1">
         </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-12">     
       </PopoverGroup>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="/login" class="text-xl font-semibold text-white ">Log in <span aria-hidden="true">&rarr;</span></a> 
-        <a href="/login"><span class="flex items-center space-x-1"><span class="text-xl font-semibold text-white ml-10" >Sair</span><i class="material-icons text-xs/4 text-white">logout</i>
-</span></a>  
+        <a href="/login" class="text-xl font-semibold text-stone-800 hover:text-stone-600 ">Log in <span aria-hidden="true">&rarr;</span></a> 
+        <a href="/login"><span class="flex items-center space-x-1"><span class="text-xl font-semibold text-stone-800 ml-10 hover:text-red-800" >Sair</span></span></a>  
       </div>
     </nav>
     <Dialog class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
@@ -50,27 +49,38 @@
   <div class="container mx-auto p-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       <div
-        v-for="post in postagens"
-        :key="post.id"
-        class="max-w-sm rounded overflow-hidden shadow-lg bg-stone-200"
-      >
-        <img class="w-full" :src="post.imagem" alt="Imagem">
-        <button
-  @click="irParaEditar(post.id)"
-  class="bg-stone-500 hover:bg-stone-900 text-white font-bold py-2 px-4 rounded-full mt-2 ml-2"
+  v-for="post in postagens"
+  :key="post.id"
+  class="max-w-sm rounded overflow-hidden shadow-lg bg-stone-100 p-4 flex flex-col"
 >
-  Editar
-</button>
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2 text-stone-800">{{ post.titulo }}</div>
-          <p class="text-stone-700 text-base">
-            {{ limitarDescricao(post.descricao) }}
-          </p>
-        </div>
-      </div>
+ 
+  <img
+    class="w-full h-[200px] object-cover rounded"
+    :src="post.imagem"
+    alt="Imagem"
+  />
+
+ 
+  <div class="flex-1 px-2 py-4">
+    <h2 class="font-bold text-xl mb-2 text-stone-800">{{ post.titulo }}</h2>
+    <p class="text-stone-700 text-base">
+      {{ limitarDescricao(post.descricao) }}
+    </p>
+  </div>
+
+  
+  <div class="mt-auto px-2 pt-2">
+    <button
+      @click="irParaEditar(post.id)"
+      class="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline"
+    >
+      Editar
+    </button>
+  </div>
+</div>
     </div>
   </div>
-  <button class="fixed bottom-18 right-18 bg-stone-900 text-white px-4 py-2 rounded-full shadow-lg hover:bg-stone-700">
+  <button class="fixed bottom-18 right-18 bg-stone-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-stone-700">
     <a href="/admin/create"><span class="flex items-center space-x-1"><i class="material-icons text-white">add</i>
       <span class="text-xl font-ligth text-white" >Criar Post</span>
 </span></a>

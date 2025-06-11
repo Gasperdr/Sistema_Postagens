@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-stone-300">
+  <div class="min-h-screen flex items-center justify-center bg-stone-200">
   <div class="w-full max-w-xs">
-    <form @submit.prevent="atualizarPost" class="bg-stone-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 text-stone-900">
+    <form @submit.prevent="atualizarPost" class="bg-stone-100 shadow-md rounded px-8 pt-6 pb-8 mb-4 text-stone-900">
       <h2 class="text-xl font-bold text-center mb-4">Editar Postagem</h2>
 
       <div v-if="statusMessage" class="mb-4 text-green-800 text-sm text-center">
@@ -48,13 +48,13 @@
 
       <div class="flex items-center justify-between">
         <button
-          class="bg-stone-900 hover:bg-stone-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          class="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
         >
           Salvar
         </button>
         <a
-          class="inline-block align-baseline font-bold text-sm text-stone-400 hover:text-red-600"
+          class="inline-block align-baseline font-bold text-sm text-stone-500 hover:text-red-600"
           href="/home"
         >
           Cancelar
