@@ -11,7 +11,7 @@ class AuthServiceProvider extends ServiceProvider
 {
 
     protected $policies = [
-        'App\Models\Post' => 'App\Policies\PostagemPolicy',
+        Post::class => PostagemPolicy::class,
     ];
 
     public function boot(): void

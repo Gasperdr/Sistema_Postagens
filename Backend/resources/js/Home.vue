@@ -1,14 +1,12 @@
-<template class="BackGroundHome">
-  <App />
-  
-
+<template>
+  <home />
 </template>
 
 
 
 
 <script setup>
-import App from './components/menuNavHome.vue'
+import home from './components/home.vue'
 
 
 </script>

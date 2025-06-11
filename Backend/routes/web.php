@@ -39,3 +39,4 @@ Route::get('/token', [AlterarSenhaController::class, 'index'])->name('token');
 
 Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit');
 Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update');
+

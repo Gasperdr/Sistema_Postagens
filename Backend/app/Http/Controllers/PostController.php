@@ -41,9 +41,11 @@ public function update(Request $request,$id)
      */
     public function index()
     {
-        $post = Post::all();
+
+        return response()->json(Post::all());
+        // $post = Post::all();
         // Gate::authorize('ver-post');
-        return view('home', compact('post'));
+        // return view('home', compact('post'));
     }
 
     /**
