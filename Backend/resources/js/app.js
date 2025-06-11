@@ -8,6 +8,7 @@ import App from './components/home.vue';
 import Home from './Home.vue';
 import Edit from './Edit.vue'
 import CreateCont from './CreatePost.vue';
+import Login from './Login.vue'
 
 const app = createApp();
 
@@ -15,5 +16,7 @@ app.component('edit', Edit);
 app.component('app', App);
 app.component('home', Home);
 app.component('create-post', CreateCont)
+
+app.component('login', Login)
 
 app.mount('#app');

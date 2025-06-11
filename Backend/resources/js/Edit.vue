@@ -9,7 +9,7 @@
       </div>
 
       <div class="mb-4">
-        <label class="block text-gray-800 text-sm font-bold mb-2" for="titulo">
+        <label class="block text-stone-700 text-sm font-bold mb-2" for="titulo">
           Título
         </label>
         <input
@@ -22,7 +22,7 @@
       </div>
 
       <div class="mb-4">
-        <label class="block text-gray-800 text-sm font-bold mb-2" for="descricao">
+        <label class="block text-stone-700 text-sm font-bold mb-2" for="descricao">
           Descrição
         </label>
         <textarea
@@ -34,7 +34,7 @@
       </div>
 
       <div class="mb-6">
-        <label class="block text-gray-800 text-sm font-bold mb-2" for="imagem">
+        <label class="block text-stone-700 text-sm font-bold mb-2" for="imagem">
           Imagem
         </label>
         <input
